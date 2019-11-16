@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import './App.css';
 import API from './adapters/API'
+require('dotenv').config()
 
 function App() {
 
@@ -12,6 +13,20 @@ function App() {
     API.getUserRepos(e.target.username.value)
     .then(setUserRepos)
   }
+
+  const reducer = (tally, repo) => {
+    if (!tally[repo.language]) {
+      tally[repo.language] = 1;
+    } else {
+      tally[repo.language] = tally[repo.language] + 1;
+    }
+    return tally;
+  }
+
+  const countLangs = repos => {
+    return repos.reduce(reducer, {})
+  }
+
 
   return (
     <div className="App">
