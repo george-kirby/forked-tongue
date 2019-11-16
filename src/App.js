@@ -27,6 +27,11 @@ function App() {
     return repos.reduce(reducer, {})
   }
 
+  const mostPop = tally => {
+    return Object.keys(tally).reduce((highest, lang) => {
+    if (tally[highest] < tally[lang]) { highest = lang }
+      return highest})
+  }
 
   return (
     <div className="App">
