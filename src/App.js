@@ -5,32 +5,38 @@ require('dotenv').config()
 
 function App() {
 
+  const [username, setUsername] = useState(null);
   const [userRepos, setUserRepos] = useState([]);
+  const [showResults, setShowResults] = useState(false);
 
   const handleFormSubmit = e => {
     e.preventDefault()
-    console.log(e.target.username.value)
+    setShowResults(true)
+    setUsername(e.target.username.value)
     API.getUserRepos(e.target.username.value)
-    .then(setUserRepos)
-  }
-
-  const reducer = (tally, repo) => {
-    if (!tally[repo.language]) {
-      tally[repo.language] = 1;
-    } else {
-      tally[repo.language] = tally[repo.language] + 1;
-    }
-    return tally;
+    .then(repos => {
+      setUserRepos(repos)
+    })
   }
 
   const countLangs = repos => {
-    return repos.reduce(reducer, {})
+    // debugger
+    return repos.reduce((tally, repo) => {
+      if (!tally[repo.language]) {
+        tally[repo.language] = 1;
+      } else {
+        tally[repo.language] = tally[repo.language] + 1;
+      }
+      return tally;
+    }, {})
   }
 
-  const mostPop = tally => {
-    return Object.keys(tally).reduce((highest, lang) => {
-    if (tally[highest] < tally[lang]) { highest = lang }
+  const mostPopularLanguage = tally => {
+    let keysArray = Object.keys(tally)
+    return keysArray.reduce((highest, language) => {
+    if (tally[highest] < tally[language]) { highest = language }
       return highest})
+    // return Object.keys(tally)
   }
 
   return (
@@ -44,6 +50,14 @@ function App() {
           </label>
           <input type="submit"/>
         </form>
+        {showResults && <div>
+          {userRepos.length > 1 ? 
+            <div>
+              <p>{username}'s favourite language is probably {mostPopularLanguage(countLangs(userRepos))}!</p>
+            </div>
+            : "Loading results..."}
+        </div>
+        }
     </div>
   );
 }
