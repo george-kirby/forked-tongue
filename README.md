@@ -6,7 +6,7 @@ Forked Tongue is a simple React app that returns a best guess of a given Github 
 
 ### From Github
 
-This app's Github repository is *https://github.com/george-kirby/forked-tongue*.
+This app's Github repository is https://github.com/george-kirby/forked-tongue.
 
 To access this code on your local machine from this Github repository, first *fork* this repository. Go to the top-right corner of the page and click **Fork**. 
 
