@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="App-header">
-        Forked Tongue
+        Forked Tongue {"-<"} 
       </h1>
       <p>Find out a Github user's favourite programming language!</p>
         <form onSubmit={handleFormSubmit}>
