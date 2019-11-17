@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import './App.css';
 import API from './adapters/API'
-require('dotenv').config()
 
 function App() {
 
@@ -10,11 +9,12 @@ function App() {
   const [showResults, setShowResults] = useState(false);
 
   const handleFormSubmit = e => {
+    let username = e.target.username.value
     e.preventDefault()
     setShowResults(true)
-    setUsername(e.target.username.value)
-    API.getUserRepos(e.target.username.value)
+    API.getUserRepos(username)
     .then(repos => {
+      setUsername(username)
       setUserRepos(repos)
     })
   }
@@ -44,8 +44,9 @@ function App() {
       <h1 className="App-header">
         Forked Tongue
       </h1>
+      <p>Find out a Github user's favourite programming language!</p>
         <form onSubmit={handleFormSubmit}>
-          <label>Enter a github username: 
+          <label>Enter their username: 
             <input type="text" name="username"/>
           </label>
           <input type="submit"/>
