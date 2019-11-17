@@ -3,10 +3,14 @@
 Forked Tongue is a simple React app that returns a best guess of a given Github user's favourite programming language. 
 
 
-demo GIF
+**demo GIF**
 
 
 ## Getting started
+
+### Prerequisites
+
+React - **URL**
 
 ### From Github
 
@@ -21,9 +25,9 @@ Then, clone the resulting forked repository:
 ```$ git clone COPIED_ADDRESS ```
 3. Navigate into the new directory. 
 
-### In the app directory
+### On your local machine
 
-Run your package manager's start command, such as
+In the app directory, run your package manager's start command, such as
 
 ```npm start```
 or
