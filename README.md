@@ -2,7 +2,7 @@
 
 Forked Tongue is a simple React app that returns a best guess of a given Github user's favourite programming language. 
 
-![demo gif]('./ForkedTongueDemo.gif')
+![demo gif](./ForkedTongueDemo.gif)
 
 
 ## Getting started
