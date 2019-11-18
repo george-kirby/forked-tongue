@@ -16,7 +16,11 @@ function App() {
     API.getUserRepos(username)
     .then(repos => {
       setUsername(username)
-      repos.length < 1 ? setUserRepos("none") : setUserRepos(repos)
+      if (repos.length < 1 || repos.message === "Not Found") {
+        setUserRepos("none") 
+      } else {
+       setUserRepos(repos)
+      }
     })
   }
 
