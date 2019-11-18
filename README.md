@@ -21,22 +21,28 @@ Then, clone the resulting forked repository:
 
 1. Click the green "Clone or Download" button, then copy the https address to your clipboard. 
 2. Navigate on your local machine to the folder you want to keep the app in, and run in terminal the command 
+
 ```$ git clone COPIED_ADDRESS ```
+
 3. Navigate into the new directory. 
 
 ### On your local machine
 
 In the app directory, run your package manager's start command, such as
 
-```npm start```
+```$ npm start```
+
 or
-```yarn start```
+
+```$ yarn start```
 
 This will start the server, and Forked Tongue will be available to view on http://localhost:3000.
 
 ## Using the app
 
-Simply enter a Github username into the text-field and submit. Forked Tongue then sends a request to the [Github API](https://developer.github.com/v3/), to access data on 100 of that user's repositories, and counts the frequency of programming languages, based on which language is the main one for each repository. The most commonly used language is presented as probably being that user's favourite!
+Simply enter a Github username into the text-field and submit. 
+
+Forked Tongue then sends a request to the [Github API](https://developer.github.com/v3/), to access data on 100 of that user's repositories, and counts the frequency of programming languages, based on which language is the main one for each repository. The most commonly used language is presented as probably being that user's favourite!
 
 The demo gif above shows an example with george-kirby (me).
 
