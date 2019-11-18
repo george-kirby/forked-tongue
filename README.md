@@ -22,7 +22,7 @@ Then, clone the resulting forked repository:
 1. Click the green "Clone or Download" button, then copy the https address to your clipboard. 
 2. Navigate on your local machine to the folder you want to keep the app in, and run in terminal the command 
 
-```$ git clone COPIED_ADDRESS ```
+```$ git clone PASTE_COPIED_ADDRESS_HERE ```
 
 3. Navigate into the new directory. 
 
