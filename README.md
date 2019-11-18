@@ -2,8 +2,7 @@
 
 Forked Tongue is a simple React app that returns a best guess of a given Github user's favourite programming language. 
 
-
-**demo GIF**
+![demo gif]('./ForkedTongueDemo.gif')
 
 
 ## Getting started
@@ -44,7 +43,7 @@ Simply enter a Github username into the text-field and submit. Forked Tongue the
 ## Future development
 
 There are a number of potential improvements to be made to the app:
-- tests! As a recent software engineering graduate, I am just starting to learn to implement tests in my apps.
+- tests! As a recent software engineering graduate, I am just starting to learn to implement tests in my apps. This app contains the first tests I have written, and there is a lot of room for improvement. 
 - multiple requests, to get *all* of the user's repositories. At present Forked Tongue only looks at (up to) 100 repositories of each user, due to the structure of the Github API. 
 - making the request with an appropriate Authorization header (**github docs link**) would allow for 5,000 requests every hour, rather than just 60. 
 - a more detailed breakdown of the count of each language (eg a chart to show the frequency of each language)
