@@ -12,6 +12,7 @@ function App() {
     e.preventDefault()
     let username = e.target.username.value
     setShowResults(true)
+    setUserRepos([])
     API.getUserRepos(username)
     .then(repos => {
       setUsername(username)
@@ -20,7 +21,6 @@ function App() {
   }
 
   const countLangs = repos => {
-    // debugger
     return repos.reduce((tally, repo) => {
       if (!tally[repo.language]) {
         tally[repo.language] = 1;
@@ -43,14 +43,17 @@ function App() {
       return null
     } else {
       if (userRepos.length < 1) {
-        return <p>Loading results...</p>
+        return loading
       } else if (userRepos === "none") {
-        return <p>Sorry, we found no repositories associated with that username. Please try again</p>
+        return noneFound
       } else {
         return <p>{username}'s favourite language is probably {mostPopularLanguage(countLangs(userRepos))}!</p>
       }
     }
   }
+
+  const loading = <p>Loading results...</p>
+  const noneFound = <p>Sorry, we found no repositories associated with that username. Please try again</p>
 
   return (
     <div className="App">
