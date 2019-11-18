@@ -9,13 +9,13 @@ function App() {
   const [showResults, setShowResults] = useState(false);
 
   const handleFormSubmit = e => {
-    let username = e.target.username.value
     e.preventDefault()
+    let username = e.target.username.value
     setShowResults(true)
     API.getUserRepos(username)
     .then(repos => {
       setUsername(username)
-      setUserRepos(repos)
+      repos.length < 1 ? setUserRepos("none") : setUserRepos(repos)
     })
   }
 
@@ -36,7 +36,20 @@ function App() {
     return keysArray.reduce((highest, language) => {
     if (tally[highest] < tally[language]) { highest = language }
       return highest})
-    // return Object.keys(tally)
+  }
+
+  const displayResult = () => {
+    if (!showResults) { 
+      return null
+    } else {
+      if (userRepos.length < 1) {
+        return <p>Loading results...</p>
+      } else if (userRepos === "none") {
+        return <p>Sorry, we found no repositories associated with that username. Please try again</p>
+      } else {
+        return <p>{username}'s favourite language is probably {mostPopularLanguage(countLangs(userRepos))}!</p>
+      }
+    }
   }
 
   return (
@@ -51,14 +64,9 @@ function App() {
           </label>
           <input type="submit"/>
         </form>
-        {showResults && <div>
-          {userRepos.length > 1 ? 
-            <div>
-              <p>{username}'s favourite language is probably {mostPopularLanguage(countLangs(userRepos))}!</p>
-            </div>
-            : "Loading results..."}
+        <div> 
+          {displayResult()}
         </div>
-        }
     </div>
   );
 }
